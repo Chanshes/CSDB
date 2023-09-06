@@ -21,5 +21,5 @@
 ## 7. 试解释 DB、DBMS 和 DBS 三个概念 ##
 
     DB：数据库（Database）。DB 是长期存储在计算机内，有组织的、统一管理的相关数据的集合。
-    DBMS：数据库管理系统（Database Management System）。DBMS 是位于用户与操作系统（OS）之间的一层数据管理软件，它为用户或应用程序提供访问DB的方法，包括DB的建立、查询、更新及各种数据控制。
+    DBMS：数据库管理系统（Database Management System）。DBMS 是位于用户与操作系统（OS）之间的一层数据管理软件，它为用户或应用程序提供访问 DB 的方法，包括 DB 的建立、查询、更新及各种数据控制。
     DBS：数据库系统（Database System）。DBS 是能实现有组织地、动态地存储大量关联数据，方便多用户访问的，有计算机硬件、软件和数据资源组成的系统。 ——p9
