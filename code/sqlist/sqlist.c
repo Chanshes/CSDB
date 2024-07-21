@@ -16,7 +16,7 @@ void InitList(SqList *L)
 /// @return 若i的输入不合法，则返回false；插入成功，返回true
 bool ListInsert(SqList *L, int i, ElemType e)
 {
-    if (i < 1 || i > L->length + 1)          //判断i的范围是否有效
+    if (i < 1 || i > L->length+1)          //判断i的范围是否有效
         return false;
     if (L->length >= MaxSize)          //当前存储空间已满，不能插入
         return false;
@@ -52,6 +52,6 @@ int LocateElem(SqList L, ElemType e)
     int i;
     for (i=0; i < L.length; i++)
         if (L.data[i] == e)
-            return i + 1;         //下标为i的元素值等于e，返回其位序i+1
+            return i+1;         //下标为i的元素值等于e，返回其位序i+1
     return 0;                   //退出循环，说明查找失败
 }
