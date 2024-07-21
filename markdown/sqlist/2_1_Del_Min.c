@@ -1,5 +1,4 @@
 #include "sqlist.h"
-#include "seqlist.h"
 
 /// @brief 删除顺序表 L 中最小值元素节点，并通过引用型参数 value 返回其值
 /// @param L 线性表 L
@@ -89,16 +88,3 @@ bool Del_s_t(SqList *L,ElemType s, ElemType t)
     return true;
 }
 
-/// @brief 从有序顺序表中删除所有其值重复的元素
-/// @param L 线性表 L
-bool Delete_Same(SeqList *L)
-{
-    if (L->length == 0)
-        return false;
-    int i, j;                           //i 存储第一个不相同的元素，j 为工作指针
-    for (i = 0, j = 1; j < L->length; j++)
-        if(L->data[i] != L->data[j])    //查找下一个与上一个元素值不同的元素
-            L->data[++i] = L->data[j];  //找到后，将元素前移
-    L->length = i+1;
-    return true;
-}
