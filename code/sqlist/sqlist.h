@@ -3,10 +3,10 @@
 
 #define false 0
 #define true 1
-#define bool int 
+typedef int bool;
 
 #define MaxSize 50              //定义线性表的最大长度
-#define ElemType int
+typedef int ElemType;
 
 //静态分配的顺序表存储结构
 typedef struct 

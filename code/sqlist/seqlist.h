@@ -3,10 +3,10 @@
 
 #define false 0
 #define true 1
-#define bool int
+typedef int bool;
 
 #define InitSize 100          //表长度的初始定义
-#define ElemType int
+typedef int ElemType;
 
 typedef struct
 {
