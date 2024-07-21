@@ -1,14 +1,18 @@
 //动态分配
 #include <stdio.h>
 
+#define false 0
+#define true 1
+#define bool int
+
 #define InitSize 100          //表长度的初始定义
 #define ElemType int
 
 typedef struct
 {
     ElemType *data;             //指示动态分配的数组的指针
-    int MaxSize,length;         //数组的最大容量和当前个数
-}SeqList;                       //动态分配数组顺序表的类型定义
+    int MaxSize, length;         //数组的最大容量和当前个数
+} SeqList;                       //动态分配数组顺序表的类型定义
 
 //初始化表。构造一个空的线性表。
 void InitList(SeqList *L);
