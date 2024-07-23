@@ -87,4 +87,3 @@ bool Del_s_t(SqList *L,ElemType s, ElemType t)
     L->length -= k;                     //长度减小
     return true;
 }
-
