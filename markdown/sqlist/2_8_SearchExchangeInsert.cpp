@@ -1,5 +1,3 @@
-#include "stdio.h"
-
 typedef int ElemType;
 /// @brief 在表中查找数值为 x 的元素，若找到，则将其与后继元素位置相交换，若找不到，则将其插入表中并使表中元素仍递增有序。
 /// @param A 数组
