@@ -16,7 +16,7 @@ void get_next(SString T, int next[])
     }
 }
 
-void Index_KMP(SString S, SString T, int next[])
+int Index_KMP(SString S, SString T, int next[])
 {
     int i=1, j=1;
     while (i <= S.length && j < T.length)
