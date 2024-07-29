@@ -6,7 +6,7 @@ out/
 classes/
 
 # vscode
-
+.vscode/
 .settings/
 .vscode/
 bin/
