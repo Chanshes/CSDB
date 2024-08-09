@@ -13,7 +13,7 @@ void ShellSort(ElemType A[],int n){
 }
 
 int main(void){
-    ElemType A[] = {0,49,38,65,97,76,13,27,49};
+    ElemType A[] = {0,49,38,65,97,76,13,27,49,99,8};
     ShellSort(A,8);
     showArray(A,8);
 }
