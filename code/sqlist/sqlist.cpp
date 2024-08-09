@@ -1,7 +1,5 @@
 #include "sqlist.h"
 
-SqList L;                   //声明一个顺序表
-
 //顺序表的初始化
 void InitList(SqList &L)
 {
@@ -54,4 +52,14 @@ int LocateElem(SqList L, ElemType e)
         if (L.data[i] == e)
             return i+1;         //下标为i的元素值等于e，返回其位序i+1
     return 0;                   //退出循环，说明查找失败
+}
+
+void OutputDataStream(SqList &L)
+{
+    int i=0;
+    while(i<L.length)
+    {
+        printf("%d\t",L.data[i]);
+        i++;
+    }
 }
