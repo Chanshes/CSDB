@@ -3,6 +3,8 @@
 void ShellSort(ElemType A[],int n){
     int dk,i,j;
     for(dk=n/2;dk>=1;dk=dk/2)
+    {
+        printf("dk=%d\n",dk);
         for(i=dk+1;i<=n;++i)
             if(A[i]<A[i-dk]){
                 A[0]=A[i];
@@ -10,10 +12,12 @@ void ShellSort(ElemType A[],int n){
                     A[j+dk]=A[j];
                 A[j+dk]=A[0];
             }
+        showArray(A,8);
+    }
 }
 
 int main(void){
     ElemType A[] = {0,49,38,65,97,76,13,27,49,99,8};
-    ShellSort(A,8);
     showArray(A,8);
+    ShellSort(A,8);
 }
