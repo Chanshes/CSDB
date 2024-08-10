@@ -1,48 +1,36 @@
 #include "sqlist.cpp"
 
-bool Del_Min(SqList &L, ElemType &temp);
+bool Reverse(SqList &L);
 
 int main(void)
 {
     SqList L;
     InitList(L);
-    L.length = 5;
-    L.data[0] = 8;
-    L.data[1] = 1;
-    L.data[2] = 2;
-    L.data[3] = 3;
-    L.data[4] = 5;
-    ListInsert(L,5,2);
+    L.length = 7;
+    L.data[0] = 81;
+    L.data[1] = 15;
+    L.data[2] = 27;
+    L.data[3] = 34;
+    L.data[4] = 58;
+    L.data[5] = 13;
+    L.data[6] = 75;
     OutputDataStream(L);
-    printf("\n");
-    ElemType e;
-    for(int i=0;i<=6;i++)
-    {
-        if(Del_Min(L,e))
-            printf("Min: %d\n",e);
-        else
-            printf("L is NULL!\n");
-        OutputDataStream(L);
-        printf("\n\n");
-    }
+
+    Reverse(L);
+    OutputDataStream(L);
+
     return 0;
 }
 
-bool Del_Min(SqList &L, ElemType &value)
-{
-    if(L.length==0)
+bool Reverse(SqList &L){
+    if(!L.length)
         return false;
-    value = L.data[0];
-    int pos = 0;
-    for(int i=1;i<L.length;i++)
-    {
-        if(L.data[i]<value)
-        {
-            value=L.data[i];
-            pos=i;
-        }
+    ElemType temp;
+    int i=0;
+    for(i=0;i<L.length/2;i++){
+        temp = L.data[i];
+        L.data[i] = L.data[L.length-i-1];
+        L.data[L.length-i-1] = temp;
     }
-    L.data[pos] = L.data[L.length-1];
-    L.length--;
     return true;
 }

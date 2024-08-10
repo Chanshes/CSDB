@@ -62,4 +62,5 @@ void OutputDataStream(SqList &L)
         printf("%d\t",L.data[i]);
         i++;
     }
+    printf("\n");
 }
