@@ -35,20 +35,15 @@ bool convers(int A[], int n, int p){
     int temp;
     for(int i=0;i<p;i++){
         temp=A[(p-i)%n];
-        Araay_print(A,n);
-        printf("i=%d,temp=%d\n",i,temp);
         for(int j=0;j<n;j++){
-            printf("A[%d]=A[%d]\n",(p-i+j)%n,(p-i+j+1)%n);
-            A[(p-i+j)%n]=A[(p-i+j+1)%n];  //循环顺序表前移一位
-            Araay_print(A,n);
+            A[(p-i+j)%n]=A[(p-i+j+1)%n];    //循环顺序表前移一位
         }
-        A[(p-i-1)%n]=temp;
-        printf("\n");
+        A[(p-i-1)%n]=temp;                  //每次循环将temp插入到左移一位后的空位
     }
-    Araay_print(A,n);
     return true;
 }
 
+//最优解
 bool Reverse(int R[],int n,int from,int to){
     if(n==0)
         return false;
@@ -68,6 +63,7 @@ bool Converse(int R[],int n,int p){
     Reverse(R,n,0,n-1);
     return true;
 }
+
 //另解
 bool converse(int R[],int n,int p){
     int Ar[MaxSize];
