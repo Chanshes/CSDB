@@ -2,6 +2,7 @@
 #include <malloc.h>
 #include "LinkList.h"
 
+//初始化链表
 bool InitList(LinkList &L){
     if(L!=NULL)
         return false;
@@ -9,7 +10,6 @@ bool InitList(LinkList &L){
     L->next=NULL;
     return true;
 }
-
 bool InitList_NoHead(LinkList &L){
     if(L!=NULL)
         return false;
@@ -17,6 +17,7 @@ bool InitList_NoHead(LinkList &L){
     return true;
 }
 
+//获取链表长度
 int Length(LinkList L){   
     int len=0;
     LNode *p=L;
@@ -27,6 +28,7 @@ int Length(LinkList L){
     return len;
 }
 
+//获取不带头结点的链表长度
 int Length_NoHead(LinkList &L){
     int len=0;
     LNode *p=L;
@@ -37,6 +39,7 @@ int Length_NoHead(LinkList &L){
     return len;
 }
 
+//获取第i个元素
 LNode *GetElem(LinkList L,int i){
     LNode *p=L;
     int j=0;
@@ -47,6 +50,7 @@ LNode *GetElem(LinkList L,int i){
     return p;
 }
 
+//获取值为e的结点
 LNode *LocateElem(LinkList &L,ElemType e){
     LNode *p=L->next;
     while(p!=NULL&&p->data!=e){
@@ -54,7 +58,7 @@ LNode *LocateElem(LinkList &L,ElemType e){
     }
     return p;
 }
-
+//在第i个元素后插入元素e
 bool ListInsert(LinkList &L,int i,ElemType e){
     LNode *p=L;
     int j=0;
@@ -71,6 +75,7 @@ bool ListInsert(LinkList &L,int i,ElemType e){
     return true;
 }
 
+//删除第i个的元素
 bool ListDelete(LinkList &L,int i,ElemType &e){
     LNode *p=L;
     int j=0;
@@ -86,7 +91,6 @@ bool ListDelete(LinkList &L,int i,ElemType &e){
     free(q);
     return true;
 }
-
 bool ListDeletep(LinkList &L,LNode* &q){
     LNode *p=L;
     while(p!=NULL&&p->next!=q){
@@ -100,6 +104,7 @@ bool ListDeletep(LinkList &L,LNode* &q){
     return true;
 }
 
+//头插法建立链表
 LinkList List_HeadInsert(LinkList &L){
     LNode *s;int x;
     L=(LNode*)malloc(sizeof(LNode));
@@ -114,7 +119,6 @@ LinkList List_HeadInsert(LinkList &L){
     }
     return L;
 }
-
 LinkList List_HeadInsert_NoHead(LinkList &L){
     LNode *s;
     int x;
@@ -128,7 +132,7 @@ LinkList List_HeadInsert_NoHead(LinkList &L){
     }
     return L;
 }
-
+//尾插法建立链表
 LinkList List_TailInsert(LinkList &L){
     int x;
     L=(LNode*)malloc(sizeof(LNode));
