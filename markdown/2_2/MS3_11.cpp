@@ -36,19 +36,19 @@ int M_Search(int A[], int B[], int n){
 
 //另解
 int Mid_Search(int A[],int B[],int n){
-    int i=0,j=0;
+    int i=1,j=0;
     while(i+j<n){
-        if(A[i]<B[j])
+        if(A[i-1]<B[j])
             i++;
         else
             j++;
     }
-    return A[i]<B[j]?A[i]:B[j]; //因为最后比较的元素就是中位数
+    return A[i-1]<B[j]?A[i-1]:B[j]; //因为最后比较的元素就是中位数
 }
 
 int main(){
-    int A[]={1,3,4,7,8};
-    int B[]={2,3,7,8,9};
+    int A[]={1,2,3,4,5,6};
+    int B[]={3,3,5,7,8,9};
     printf("Mid=%d\n",M_Search(A,B,6));
     printf("Mid=%d\n",Mid_Search(A,B,6));
 }
