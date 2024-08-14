@@ -44,9 +44,4 @@ int main(){
     scanf("%d",&x);
     Del_X_1(L,x);
     printLink(L);
-    printf("\ndel:");
-    scanf("%d",&x);
-    Del_X_2(L,x);
-    printLink(L);
-
 }
