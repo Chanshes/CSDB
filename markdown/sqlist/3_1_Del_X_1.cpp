@@ -1,5 +1,6 @@
 #include "linklist.cpp"
 
+///@brief 删除给定值的结点
 void Del_X_1(LinkList &L,ElemType x){
     LNode *p=L->next,*pre=L,*q;
     while(p!=NULL){
