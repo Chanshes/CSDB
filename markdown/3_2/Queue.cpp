@@ -5,6 +5,10 @@ int QueueEmpty(Stack S1,Stack S2){
         return 0;
 }
 
+int StackOverflow(Stack S){
+    if()
+}
+
 int EnQueue(Stack &S1,Stack &S2,ElemType e){
     if(!StackOverflow(S1)){
         Push(S1,e);
