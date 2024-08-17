@@ -1,3 +1,5 @@
+//作运行的前驱文件
+
 #include <stdio.h>
 #include <malloc.h>
 
