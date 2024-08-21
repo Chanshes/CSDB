@@ -25,9 +25,9 @@ bool Pop(SqStack &S, ElemType &x){
     return true;
 }
 
-bool GetTop(SqStack &s,ElemType &x){
+bool GetTop(SqStack S,ElemType &x){
     if(S.top==-1)
         return false;
-    x=S.data[top];
+    x=S.data[S.top];
     return true;
 }

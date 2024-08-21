@@ -1,6 +1,8 @@
+#define MAXSIZE 50
+
 typedef int ElemType;
 
-typedef struct BiTNode{
-    ElemType data;
-    struct BiTNode *lchild,*rchild;
-}BiTNode,*BiTree;
+typedef struct BiTree{
+    ElemType data[MAXSIZE];
+    int length;
+}BiTree;
