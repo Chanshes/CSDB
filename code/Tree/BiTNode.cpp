@@ -111,16 +111,30 @@ bool TreeEmpty(BiTree &T){
         return true;
 }
 //返回树的深度
-///@brief 直接用栈遍历一遍，栈的最大深度即为树深
-///@var deep 保留当前树的最大深度 temp当前子树的深度
+///@brief 直接遍历一遍，栈的最大深度即为树深
+///@var deep 保留当前树的最大深度
 int TreeDepth(BiTree &T){
     if(T==NULL)
         return 0;
-    int deep,temp;
-
-
-    return ;
+    int deep=0;
+    SqStack S;
+    BiTNode *p=T;
+    InitStack(S);
+    while(p||!IsEmpty(S)){
+        if(p){
+            Push(S,p);
+            p=p->lchild;
+        }
+        else{
+            Pop(S,p);
+            p=p->rchild;
+        }
+        if(S.top>deep)
+            deep=S.top;
+    }
+    return deep;
 }
+
 //输出当前结点值
 ElemType visit(BiTree T){
     if(T->data!=0)
@@ -152,7 +166,7 @@ void PostOrder(BiTree T){
     }
 }
 //非递归中序遍历
-bool InOrderTraverse(BiTree T){
+void InOrderTraverse(BiTree T){
     SqStack S;
     InitStack(S);
     BiTree p=T;
@@ -167,7 +181,63 @@ bool InOrderTraverse(BiTree T){
             p=p->rchild;
         }
     }
-    return true;
+}
+//非递归先序遍历
+void PreOrderTraverse(BiTree T){
+    SqStack S;
+    InitStack(S);
+    BiTree p=T;
+    while(p||!IsEmpty(S)){
+        if(p){
+            visit(p);
+            Push(S,p);
+            p=p->lchild;
+        }
+        else{
+            Pop(S,p);
+            p=p->rchild;
+        }
+    }
+}
+//非递归后续遍历
+void PostOrderTraverse(BiTree T){
+    SqStack S;
+    InitStack(S);
+    BiTNode *p=T;
+    BiTNode *r=NULL;
+    while(p||!IsEmpty(S)){
+        if(p){                          //走到最左边
+            Push(S,p);
+            p=p->lchild;
+        }
+        else{                           //向右
+            GetTop(S,p);                //读栈顶结点（非出栈）
+            if(p->rchild&&p->rchild!=r) //若右子树存在，且未被访问过
+                p=p->rchild;            //转向右
+            else{                       //否则弹出结点并访问
+                Pop(S,p);               //将该结点弹出
+                visit(p);
+                r=p;                    //记录最近访问过的结点
+                p=NULL;                 //结点访问完后重置p指针
+            }
+        }
+    }
+    //每次出栈访问完一个结点就相当于遍历完以该结点为根的子树，需将p置NULL。
+}
+
+//层次遍历
+void LevelOrder(BiTree T){
+    InitQueue(Q);
+    BiTree p;
+    EnQueue(Q,T);
+    while(!IsEmpty(Q)){             //队列不空则循环
+        DeQueue(Q,p);               //队头结点出队
+        visit(p);
+        if(p->lchild!=NULL)
+            EnQueue(Q,p->lchild);   //若左孩子不空，则左孩子入队
+        if(p->rchild!=NULL)
+            EnQueue(Q,p->rchild);   //若右孩子不空，则右孩子入队
+    }
 }
 
 int main(){
@@ -175,7 +245,6 @@ int main(){
     InitBiTree(T);
     CreateBiTree(T);
     PreOrder(T);
-    cout<<DestroyBiTree(T)<<endl;
-    PreOrder(T);
+    cout<<endl<<TreeDepth(T)<<endl;
     return 0;
 }
