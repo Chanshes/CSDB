@@ -153,13 +153,14 @@ bool TreeEmpty(BiTree &T){
 //返回树的深度
 int BiTreeDepth(BiTree &T){
     if(T==NULL)
-        return 0;
+        return -1;
     else{
         int l=BiTreeDepth(T->lchild);
         int r=BiTreeDepth(T->rchild);
         return l>r?l+1:r+1;
     }
 }
+int 
 
 //输出当前结点值
 ElemType visit(BiTree T){
@@ -271,7 +272,8 @@ int main(){
     BiTree T;
     InitBiTree(T);
     CreateBiTree(T);
+    printf("PreOrder:")
     PreOrder(T);
-    printf("%d\n",BiTreeDepth(T));
+    printf("\ndeep:%d\n",BiTreeDepth(T));
     return 0;
 }
