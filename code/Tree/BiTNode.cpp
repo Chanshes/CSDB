@@ -1,8 +1,7 @@
 #include "BiTNode.h"
 #include <malloc.h>
 #include <stdio.h>
-#include <iostream>
-using namespace std;
+
 #define MaxSize 50
 //实例化Stack为存储BiTree指针的栈
 typedef  BiTNode* SElemType;
@@ -35,6 +34,47 @@ bool GetTop(SqStack S,SElemType &x){
     if(S.top==-1)
         return false;
     x=S.data[S.top];
+    return true;
+}
+
+typedef BiTNode* QElemType;
+//实例化队列
+typedef struct{
+    QElemType data[MaxSize];
+    int front,rear;
+}SqQueue;
+//初始化队列
+void InitQueue(SqQueue &Q){
+    Q.rear=Q.front=0;
+}
+//判队空
+bool IsEmpty(SqQueue Q){
+    if(Q.rear==Q.front)
+        return true;
+    else
+        return false;
+}
+//入队
+bool EnQueue(SqQueue &Q,QElemType x){
+    if((Q.rear+1)%MaxSize==Q.front)
+        return false;
+    Q.data[Q.rear]=x;
+    Q.rear=(Q.rear+1)%MaxSize;
+    return true;
+}
+//出队
+bool DeQueue(SqQueue &Q,QElemType &x){
+    if(Q.rear==Q.front)
+        return false;
+    x=Q.data[Q.front];
+    Q.front=(Q.front+1)%MaxSize;
+    return true;
+}
+//得到队头元素
+bool GetHead(SqQueue Q,QElemType &x){
+    if(Q.rear==Q.front)
+        return false;
+    x=Q.data[Q.front];
     return true;
 }
 
@@ -111,28 +151,14 @@ bool TreeEmpty(BiTree &T){
         return true;
 }
 //返回树的深度
-///@brief 直接遍历一遍，栈的最大深度即为树深
-///@var deep 保留当前树的最大深度
-int TreeDepth(BiTree &T){
+int BiTreeDepth(BiTree &T){
     if(T==NULL)
         return 0;
-    int deep=0;
-    SqStack S;
-    BiTNode *p=T;
-    InitStack(S);
-    while(p||!IsEmpty(S)){
-        if(p){
-            Push(S,p);
-            p=p->lchild;
-        }
-        else{
-            Pop(S,p);
-            p=p->rchild;
-        }
-        if(S.top>deep)
-            deep=S.top;
+    else{
+        int l=BiTreeDepth(T->lchild);
+        int r=BiTreeDepth(T->rchild);
+        return l>r?l+1:r+1;
     }
-    return deep;
 }
 
 //输出当前结点值
@@ -141,7 +167,7 @@ ElemType visit(BiTree T){
         printf("%d\t",T->data);
     return T->data;
 }
-
+//先序遍历
 void PreOrder(BiTree T){
     if(T!=NULL){
         visit(T);
@@ -149,7 +175,7 @@ void PreOrder(BiTree T){
         PreOrder(T->rchild);
     }
 }
-
+//中序遍历
 void InOrder(BiTree T){
     if(T!=NULL){
         InOrder(T->lchild);
@@ -157,7 +183,7 @@ void InOrder(BiTree T){
         InOrder(T->rchild);
     }
 }
-
+//后序遍历
 void PostOrder(BiTree T){
     if(T!=NULL){
         PostOrder(T->lchild);
@@ -227,6 +253,7 @@ void PostOrderTraverse(BiTree T){
 
 //层次遍历
 void LevelOrder(BiTree T){
+    SqQueue Q;
     InitQueue(Q);
     BiTree p;
     EnQueue(Q,T);
@@ -245,6 +272,6 @@ int main(){
     InitBiTree(T);
     CreateBiTree(T);
     PreOrder(T);
-    cout<<endl<<TreeDepth(T)<<endl;
+    printf("%d\n",BiTreeDepth(T));
     return 0;
 }
