@@ -78,8 +78,6 @@ bool GetHead(SqQueue Q,QElemType &x){
     return true;
 }
 
-
-enum child{lchild,rchild};
 //构造空二叉树
 bool InitBiTree(BiTree &T){
     if(T==NULL)
@@ -99,14 +97,14 @@ bool DestroyBiTree(BiTree &T){
     return true;
 }
 //构造二叉树左右子树
-bool Insertchild(BiTree &T,child chi,ElemType e){
+bool Insertchild(BiTree &T,int chi,ElemType e){
     BiTNode* B=(BiTNode*)malloc(sizeof(BiTNode));
     B->data=e;
     B->lchild=NULL;
     B->rchild=NULL;
-    if(chi==lchild&&T->lchild!=NULL)
+    if(chi==0&&T->lchild!=NULL)
         T->lchild=B;
-    else if(chi==rchild&&T->rchild!=NULL)
+    else if(chi&&T->rchild!=NULL)
         T->rchild=B;
     else
         return false;   
