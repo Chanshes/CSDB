@@ -160,7 +160,7 @@ int BiTreeDepth(BiTree &T){
         return l>r?l+1:r+1;
     }
 }
-int 
+
 
 //输出当前结点值
 ElemType visit(BiTree T){
@@ -272,7 +272,7 @@ int main(){
     BiTree T;
     InitBiTree(T);
     CreateBiTree(T);
-    printf("PreOrder:")
+    printf("PreOrder:");
     PreOrder(T);
     printf("\ndeep:%d\n",BiTreeDepth(T));
     return 0;
