@@ -266,12 +266,28 @@ void LevelOrder(BiTree T){
     }
 }
 
+//求二叉树深
+int dep_re(BiTree T, int deep){
+    if(T->lchild==NULL&&T->rchild==NULL)
+        return deep;
+    else{
+        int re_l=dep_re(T->lchild,deep+1);
+        int re_r=dep_re(T->rchild,deep+1);
+        return re_l>re_r?re_l:re_r;
+    }
+}
+int deep_(BiTree T){
+    return dep_re(T,0);
+}
+
+union ui{
+    char ch;
+    int i;
+};
+
 int main(){
-    BiTree T;
-    InitBiTree(T);
-    CreateBiTree(T);
-    printf("PreOrder:");
-    PreOrder(T);
-    printf("\ndeep:%d\n",BiTreeDepth(T));
-    return 0;
+    long i;
+    int o;
+    int p;
+    printf("%d\t%d\t%d\t",sizeof(i),sizeof(o),&p);
 }
