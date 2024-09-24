@@ -1,7 +1,6 @@
 #include "Array.h"
 
-void InsertSort(ElemType A[],int n)
-{
+void InsertSort(ElemType A[],int n){
     int i,j,low,high,mid;
     for(i=2;i<=n;i++){
         A[0]=A[i];
