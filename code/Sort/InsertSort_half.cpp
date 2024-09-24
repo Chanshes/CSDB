@@ -1,6 +1,6 @@
 #include "Array.h"
 
-void InsertSort(ElemType A[],int n){
+void InsertSort_half(ElemType A[],int n){
     int i,j,low,high,mid;
     for(i=2;i<=n;i++){
         A[0]=A[i];
@@ -20,5 +20,5 @@ void InsertSort(ElemType A[],int n){
 int main(void){
     ElemType A[] = {0,49,38,65,97,76,13,27,49};
     showArray(A,8);
-    InsertSort(A,8);
+    InsertSort_half(A,8);
 }
