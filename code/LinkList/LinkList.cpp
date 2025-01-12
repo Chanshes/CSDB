@@ -111,7 +111,7 @@ LinkList List_HeadInsert(LinkList &L){
     L->next=NULL;
     scanf("%d",&x);
     while(x!=9999){
-        s=(LNode)malloc(sizeof(LNode));
+        s=(LNode*)malloc(sizeof(LNode));
         s->data=x;
         s->next=L->next;
         L->next=s;
@@ -139,7 +139,7 @@ LinkList List_TailInsert(LinkList &L){
     LNode *s,*r=L;
     scanf("%d",&x);
     while(x!=9999){
-        s=(LNode)malloc(sizeof(LNode));
+        s=(LNode*)malloc(sizeof(LNode));
         s->data=x;
         r->next=s;
         r=s;
