@@ -10,9 +10,9 @@ void InsertSort_half(ElemType A[],int n){
             if(A[mid]>A[0]) high=mid-1;
             else low=mid+1;
         }
-        for(j=i-1;j>=high+1;--j)
+        for(j=i-1;j>=low;--j)
             A[j+1]=A[j];
-        A[high+1]=A[0];
+        A[low]=A[0];
         showArray(A,n);
     }
 }
